@@ -1,0 +1,3 @@
+[submodule "livy/incubator-livy"]
+	path = livy/incubator-livy
+	url = https://github.com/apache/incubator-livy.git
