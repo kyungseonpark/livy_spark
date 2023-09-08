@@ -8,6 +8,8 @@ Apache Livy: 0.9.0 (nightly, github master branch 23-09-08, commit 8b2e29fe9fd42
 
 Apache Spark: 3.2.3+Hadoop2.7
 
+I created a Spark image using https://github.com/bitnami/containers/tree/main/bitnami/spark as a reference.
+
 ### environment
 MacOS 13.2
 
