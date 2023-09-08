@@ -17,12 +17,7 @@ Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
 ### 1. Build Livy
 ```shell
 cd livy/incubator-livy
-mvn clean package -B -V -e \                                                                         
-        -Pspark3 \     
-        -Pthriftserver \
-        -DskipTests \
-        -DskipITs \
-        -Dmaven.javadoc.skip=true
+mvn clean package -B -V -e -Pspark3 -Pthriftserver -Phadoop3 -Pscala-2.12 -DskipTests -DskipITs -Dmaven.javadoc.skip=true
 ```
 ### 2. if you want to change spark version
 check /spark/linux_os/rootfs/opt/aizen/spark

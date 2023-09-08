@@ -5,8 +5,8 @@ FROM eclipse-temurin:8u382-b05-jdk
 RUN useradd -u 1001 aizen
 
 RUN apt-get update  \
-    && apt-get install -y python3.11  \
-    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1  \
+    && apt-get install -y python3.10
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1  \
     && apt-get install -y python3-pip  \
     && apt-get install -y fai-client \
     && apt upgrade \
@@ -33,7 +33,7 @@ RUN mkdir /.local && chmod g+rwX /.local
 COPY rootfs /
 RUN /opt/aizen/scripts/spark/postunpack.sh
 RUN /opt/aizen/scripts/java/postunpack.sh
-ENV APP_VERSION="3.2.3" \
+ENV APP_VERSION="3.4.1" \
     AIZEN_APP_NAME="spark" \
     JAVA_HOME="/opt/java/openjdk" \
     LD_LIBRARY_PATH="/opt/aizen/python/lib:/opt/aizen/spark/venv/lib/python3.8/site-packages/numpy.libs:$LD_LIBRARY_PATH" \

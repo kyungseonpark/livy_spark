@@ -2,8 +2,8 @@ version: '3'
 
 services:
   spark-master:
-#    image: aizen_spark:230905
-    build: ./spark/linux_os/
+    image: aizen_spark:j8_s323
+#    build: ./spark/linux_os/
     environment:
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
@@ -24,8 +24,8 @@ services:
       - net
 
   spark-worker1:
-#    image: aizen_spark:230905
-    build: ./spark/linux_os/
+    image: aizen_spark:j8_s323
+#    build: ./spark/linux_os/
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
@@ -50,8 +50,8 @@ services:
       - spark-master
 
   spark-worker2:
-#    image: aizen_spark:230905
-    build: ./spark/linux_os/
+    image: aizen_spark:j8_s323
+#    build: ./spark/linux_os/
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
@@ -77,7 +77,7 @@ services:
 
   livy-server:
     container_name: livy_server
-    build: ./livy-server/
+    build: ./livy/
     command: ["sh", "-c", "/opt/aizen/livy/bin/livy-server"]
     user: root
     volumes:
@@ -99,22 +99,22 @@ services:
       - spark-worker1
       - spark-worker2
 
-#  db:
-#    container_name: pg_container
-#    image: postgres
-#    restart: always
-#    environment:
-#        POSTGRES_USER: "postgres"
-#        POSTGRES_PASSWORD: "12345"
-#        POSTGRES_DB: "db"
-#        POSTGRES_HOST_AUTH_METHOD: trust
-#    ports:
-#      - "5432:5432"
-#    networks:
-#      - net
-#
-#volumes:
-#  pg_data:
+  db:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    environment:
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "12345"
+        POSTGRES_DB: "db"
+        POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+
+volumes:
+  pg_data:
 
 networks:
   net:
