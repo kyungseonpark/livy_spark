@@ -1,0 +1,7 @@
+*.jar
+!spark/**/*.jar
+!spark/**/**/*.jar
+!spark/**/**/**/**/**/**/*.jar
+
+/spark/linux_os/jars_dir/*
+/spark/linux_os/rootfs/opt/aizen/spark/*

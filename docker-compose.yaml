@@ -29,7 +29,7 @@ services:
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_MEMORY=4G
       - SPARK_WORKER_CORES=1
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
       - SPARK_RPC_ENCRYPTION_ENABLED=no
@@ -55,7 +55,7 @@ services:
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_MEMORY=4G
       - SPARK_WORKER_CORES=1
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
       - SPARK_RPC_ENCRYPTION_ENABLED=no
@@ -70,6 +70,84 @@ services:
       - ./spark/jars_dir:/opt/aizen/spark/ivy:z
     ports:
       - '8082:8082'   
+    networks:
+      - net
+    depends_on:
+      - spark-master
+
+  spark-worker3:
+    image: aizen_spark:j8_s323
+    #    build: ./spark/linux_os/
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=4G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    user: root
+    volumes:
+      - type: bind
+        source: ./spark/conf/log4j.properties
+        target: /opt/aizen/spark/conf/log4j.properties
+      - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
+      - ./spark/jars_dir:/opt/aizen/spark/ivy:z
+    ports:
+      - '8082:8082'
+    networks:
+      - net
+    depends_on:
+      - spark-master
+
+  spark-worker4:
+    image: aizen_spark:j8_s323
+    #    build: ./spark/linux_os/
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=4G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    user: root
+    volumes:
+      - type: bind
+        source: ./spark/conf/log4j.properties
+        target: /opt/aizen/spark/conf/log4j.properties
+      - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
+      - ./spark/jars_dir:/opt/aizen/spark/ivy:z
+    ports:
+      - '8082:8082'
+    networks:
+      - net
+    depends_on:
+      - spark-master
+
+  spark-worker5:
+    image: aizen_spark:j8_s323
+    #    build: ./spark/linux_os/
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=4G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    user: root
+    volumes:
+      - type: bind
+        source: ./spark/conf/log4j.properties
+        target: /opt/aizen/spark/conf/log4j.properties
+      - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
+      - ./spark/jars_dir:/opt/aizen/spark/ivy:z
+    ports:
+      - '8082:8082'
     networks:
       - net
     depends_on:

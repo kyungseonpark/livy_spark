@@ -31,6 +31,7 @@ RUN chmod g+rwX /opt/aizen
 RUN mkdir /.local && chmod g+rwX /.local
 
 COPY rootfs /
+ADD jars_dir /opt/aiznen/spark/jars
 RUN /opt/aizen/scripts/spark/postunpack.sh
 RUN /opt/aizen/scripts/java/postunpack.sh
 ENV APP_VERSION="3.4.1" \
