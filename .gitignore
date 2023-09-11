@@ -3,5 +3,6 @@
 !spark/**/**/*.jar
 !spark/**/**/**/**/**/**/*.jar
 
-/spark/linux_os/jars_dir/*
-/spark/linux_os/rootfs/opt/aizen/spark/*
+/livy/built_livy/*
+/spark/linux_os/jars_dir/*.jar
+/spark/linux_os/rootfs/opt/aizen/spark/*/
