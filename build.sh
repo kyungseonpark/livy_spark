@@ -1,17 +1,17 @@
 # Specify the directory where Livy (an Apache project) is located.
 livy_dir="./livy/incubator-livy"
 
-## Change the current working directory to the Livy directory or exit if it fails.
-#cd "$livy_dir" || exit
-#
-## Check out a specific Git commit (8b2e29fe9fd42c20395c63e1571f2492f005162b).
-#git checkout 8b2e29fe9fd42c20395c63e1571f2492f005162b
-#
-## Clean, package, and build Livy with specific Maven profiles and options.
-#mvn clean package -B -V -e -Pspark3 -Pthriftserver -Pscala-2.12 -DskipTests -DskipITs -Dmaven.javadoc.skip=true
-#
-## Change the current working directory back to the parent directory.
-#cd "../.."
+# Change the current working directory to the Livy directory or exit if it fails.
+cd "$livy_dir" || exit
+
+# Check out a specific Git commit (8b2e29fe9fd42c20395c63e1571f2492f005162b).
+git checkout 8b2e29fe9fd42c20395c63e1571f2492f005162b
+
+# Clean, package, and build Livy with specific Maven profiles and options.
+mvn clean package -B -V -e -Pspark3 -Pthriftserver -Pscala-2.12 -DskipTests -DskipITs -Dmaven.javadoc.skip=true
+
+# Change the current working directory back to the parent directory.
+cd "../.."
 
 # Specify the directory where Spark is located.
 spark_dir="./spark/linux_os"
