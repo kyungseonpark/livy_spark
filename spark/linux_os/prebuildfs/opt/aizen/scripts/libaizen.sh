@@ -46,7 +46,7 @@ print_image_welcome_page() {
     log "   ____              __"
     log "  / __/__  ___ _____/ /__"
     log " _\ \/ _ \/ _ \`/ __/  '_/"
-    log "/___/ .__/\_,_/_/ /_/\_\   version 3.4.1"
+    log "/___/ .__/\_,_/_/ /_/\_\   version 3.2.3"
     log "   /_/"
     log "This image is based on Bitnami's Spark code."
 }

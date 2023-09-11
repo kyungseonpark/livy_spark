@@ -16,7 +16,7 @@ cd "../.."
 # Specify the directory where Spark is located.
 spark_dir="./spark/linux_os"
 
-cp -rf "$livy_dir/thriftserver/server/target/spark"*/ "$spark_dir/rootfs/opt/aizen/spark/"
+cp -rf "$livy_dir/thriftserver/server/target/spark"*/* "$spark_dir/rootfs/opt/aizen/spark/"
 
 # Change the current working directory to the Spark directory or exit if it fails.
 cd "$spark_dir" || exit

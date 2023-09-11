@@ -34,7 +34,7 @@ COPY rootfs /
 ADD jars_dir /opt/aiznen/spark/jars
 RUN /opt/aizen/scripts/spark/postunpack.sh
 RUN /opt/aizen/scripts/java/postunpack.sh
-ENV APP_VERSION="3.4.1" \
+ENV APP_VERSION="3.2.3" \
     AIZEN_APP_NAME="spark" \
     JAVA_HOME="/opt/java/openjdk" \
     LD_LIBRARY_PATH="/opt/aizen/python/lib:/opt/aizen/spark/venv/lib/python3.8/site-packages/numpy.libs:$LD_LIBRARY_PATH" \
