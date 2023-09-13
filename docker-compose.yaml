@@ -95,7 +95,7 @@ services:
       - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
       - ./spark/jars_dir:/opt/aizen/spark/ivy:z
     ports:
-      - '8082:8082'
+      - '8083:8083'
     networks:
       - net
     depends_on:
@@ -121,7 +121,7 @@ services:
       - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
       - ./spark/jars_dir:/opt/aizen/spark/ivy:z
     ports:
-      - '8082:8082'
+      - '8084:8084'
     networks:
       - net
     depends_on:
@@ -147,7 +147,7 @@ services:
       - ./spark/spark-defaults.conf:/opt/aizen/spark/conf/spark-defaults.conf
       - ./spark/jars_dir:/opt/aizen/spark/ivy:z
     ports:
-      - '8082:8082'
+      - '8085:8085'
     networks:
       - net
     depends_on:
@@ -177,22 +177,22 @@ services:
       - spark-worker1
       - spark-worker2
 
-  db:
-    container_name: pg_container
-    image: postgres
-    restart: always
-    environment:
-        POSTGRES_USER: "postgres"
-        POSTGRES_PASSWORD: "12345"
-        POSTGRES_DB: "db"
-        POSTGRES_HOST_AUTH_METHOD: trust
-    ports:
-      - "5432:5432"
-    networks:
-      - net
-
-volumes:
-  pg_data:
+#  db:
+#    container_name: pg_container
+#    image: postgres
+#    restart: always
+#    environment:
+#        POSTGRES_USER: "postgres"
+#        POSTGRES_PASSWORD: "12345"
+#        POSTGRES_DB: "db"
+#        POSTGRES_HOST_AUTH_METHOD: trust
+#    ports:
+#      - "5432:5432"
+#    networks:
+#      - net
+#
+#volumes:
+#  pg_data:
 
 networks:
   net:
