@@ -9,8 +9,8 @@ RUN apt-get update  \
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1  \
     && apt-get install -y python3-pip  \
     && apt-get install -y fai-client \
-    && apt upgrade \
-    && apt update
+    && apt upgrade -y \
+    && apt update -y
 
 ARG JAVA_EXTRA_SECURITY_DIR="/aizen/java/extra-security"
 ARG TARGETARCH
@@ -23,15 +23,15 @@ ENV HOME="/" \
 COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
-RUN install_packages ca-certificates curl libbz2-1.0 libcom-err2 libcrypt1 libffi7 libgcc-s1 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 liblzma5 libncursesw6 libnsl2 libreadline8 libsqlite3-0 openssl libssl-dev libstdc++6 libtinfo6 libtirpc3 procps zlib1g
+RUN install_packages -y ca-certificates curl libbz2-1.0 libcom-err2 libcrypt1 libffi7 libgcc-s1 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 liblzma5 libncursesw6 libnsl2 libreadline8 libsqlite3-0 openssl libssl-dev libstdc++6 libtinfo6 libtirpc3 procps zlib1g
 RUN apt-get autoremove --purge -y curl && \
-    apt-get update && apt-get upgrade -y && \
-    apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get update -y && apt-get upgrade -y && \
+    apt-get clean -y && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN chmod g+rwX /opt/aizen
 RUN mkdir /.local && chmod g+rwX /.local
 
 COPY rootfs /
-ADD jars_dir /opt/aiznen/spark/jars
+COPY jars_dir /opt/aizen/spark/jars
 RUN /opt/aizen/scripts/spark/postunpack.sh
 RUN /opt/aizen/scripts/java/postunpack.sh
 ENV APP_VERSION="3.2.3" \
