@@ -1,3 +1,4 @@
+*.ipynb
 *.jar
 !spark/**/*.jar
 !spark/**/**/*.jar
