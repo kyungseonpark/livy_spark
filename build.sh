@@ -71,7 +71,7 @@ find "$livy_dir" -name "*.jar" -exec cp {} "$built_jars" \;
 mkdir "$built_repl_jars"
 
 # Copy REPL JAR files from a specific location in the Livy directory to the REPL JARs directory.
-cp -rf "$livy_dir/repl/scala-2.12/target/jars/" "$built_repl_jars"
+cp -rf "$livy_dir/repl/scala-2.12/target/jars"/* "$built_repl_jars/"
 
 # Create a directory for RSC JAR files.
 mkdir "$built_rcs_jars"
